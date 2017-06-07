@@ -1,22 +1,13 @@
 <ion-view view-title="微超市">
     <ion-content>
-      <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
-      <ion-slide-box on-slide-changed="slideHasChanged($index)" style="height: 150px;" auto-play="true">
-        <ion-slide>
-          <div class="box blue"><h1>BLUE</h1></div>
-        </ion-slide>
-        <ion-slide>
-          <div class="box yellow"><h1>YELLOW</h1></div>
-        </ion-slide>
-        <ion-slide>
-          <div class="box pink"><h1>PINK</h1></div>
-        </ion-slide>
-      </ion-slide-box>
       <ion-list>
-        <ion-item ng-repeat="good in goods" class="item-thumbnail-left">
-          <img src="{{good.secondHandPictures[0]}}"/>
-          <h2>{{good.name}}<span class="positive">{{good.price|currency:"￥"}}</span></h2>
-        </ion-item>
+        <a ng-repeat="good in goodsList.slice().reverse()" class="item item-thumbnail-left" href="#/tab/goodDetail/{{good.gid}}">
+          <img src="{{good.photo[0]}}"/>
+          <h2>{{good.name}}</h2>
+          <p>{{good.description}}</p>
+          <span class="energized" style="float: right;font-size: 20px;padding-top: 12px">{{good.price|currency:'￥'}}</span>
+          <p style="padding-top: 16px">赞{{good.like}} 成交量{{good.sold}}</p>
+        </a>
       </ion-list>
     </ion-content>
 </ion-view>

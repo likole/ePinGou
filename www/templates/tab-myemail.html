@@ -1,0 +1,10 @@
+<ion-view view-title="我的邮箱">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="email in myEmails.slice().reverse()">
+        <h2>{{email.from}} <span class="assertive" ng-if="email.status==0">New</span> </h2>
+        <p>{{email.content}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

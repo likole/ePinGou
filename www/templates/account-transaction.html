@@ -1,0 +1,15 @@
+<ion-view view-title="交易记录">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-thumbnail-left" ng-repeat="tx in myTransaction.slice().reverse()">
+        <img src={{tx.photo}}>
+        <h2>({{tx.num}}){{tx.name}}</h2>
+        <b class="energized">{{tx.price|currency:'￥'}}</b>
+        <p ng-if="tx.status==0">订单已生效</p>
+        <p ng-if="tx.status==1" class="balanced">交易已完成</p>
+        <p ng-if="tx.status==2">交易已取消</p>
+        <p>{{tx.time}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

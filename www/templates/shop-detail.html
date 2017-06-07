@@ -1,0 +1,26 @@
+<ion-view view-title="商品详情">
+  <ion-content>
+    <ion-slide-box auto-play="true" does-continue="true" style="height: 250px">
+      <ion-slide ng-repeat="pic in goodsList[id].photo" style="background-image:url({{pic}});background-size:100% 100%">
+      </ion-slide>
+    </ion-slide-box>
+    <ion-list>
+      <h3 class="padding">{{goodsList[id].name}}</h3>
+      <ion-item>
+        价格
+        <h2 style="float: right;font-size: 18px" class="energized">{{goodsList[id].price|currency:'￥'}} </h2>
+      </ion-item>
+      <ion-item class=" item-button-right">
+        数量（库存{{goodsList[id].remain}}）
+        <button class="button button-clear button-stable ion-minus-round" ng-click="minus()">&nbsp;{{goodNum}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+        <button class="button button-clear button-balanced ion-plus-round" ng-click="add()"></button>
+      </ion-item>
+      <ion-item>
+        总价
+        <h2 style="float: right;font-size: 18px" class="energized">{{goodsList[id].price*goodNum|currency:'￥'}} </h2>
+      </ion-item>
+      <button class="button button-block button-balanced">购 买</button>
+      <p class="padding">{{goodsList[id].description}}</p>
+    </ion-list>
+  </ion-content>
+</ion-view>

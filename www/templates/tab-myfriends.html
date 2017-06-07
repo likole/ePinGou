@@ -1,0 +1,13 @@
+<ion-view view-title="我的好友">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="friend in myFriends.slice().reverse()" class="item-avatar-left">
+        <img src="{{friend.avatar}}">
+        <h2>{{friend.name}}</h2>
+        <span class="badge badge-assertive" ng-if="friend.unread!=0">{{friend.unread}}</span>
+        <p>{{friend.lastMessage}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

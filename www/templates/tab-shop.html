@@ -1,13 +1,19 @@
-<ion-view view-title="微超市">
-    <ion-content>
-      <ion-list>
-        <a ng-repeat="good in goodsList.slice().reverse()" class="item item-thumbnail-left" href="#/tab/goodDetail/{{good.gid}}">
-          <img src="{{good.photo[0]}}"/>
-          <h2>{{good.name}}</h2>
-          <p>{{good.description}}</p>
-          <span class="energized" style="float: right;font-size: 20px;padding-top: 12px">{{good.price|currency:'￥'}}</span>
-          <p style="padding-top: 16px">赞{{good.like}} 成交量{{good.sold}}</p>
-        </a>
-      </ion-list>
-    </ion-content>
+<ion-view>
+  <ion-nav-title>
+    微超市
+    <button class="button button-clear" style="float: right;padding-top: 6px" ng-click="modal.show()">购物车</button>
+  </ion-nav-title>
+  <ion-content>
+    <ion-list>
+      <a ng-repeat="good in goodsList.slice().reverse()" class="item item-thumbnail-left"
+         href="#/tab/goodDetail/{{good.gid}}">
+        <img src="{{good.photo[0]}}"/>
+        <h2>{{good.name}}</h2>
+        <p>{{good.description}}</p>
+        <span class="energized"
+              style="float: right;font-size: 20px;padding-top: 12px">{{good.price|currency:'￥'}}</span>
+        <p style="padding-top: 16px">赞{{good.like}} 成交量{{good.sold}}</p>
+      </a>
+    </ion-list>
+  </ion-content>
 </ion-view>

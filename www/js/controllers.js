@@ -96,17 +96,18 @@ angular.module('starter.controllers', [])
 
   })
 
+
   /**
    * 个人中心控制器
    */
   .controller("accountCtrl", function ($scope, $rootScope) {
 
     //未读消息数目
-    $scope.badgeNum = {'email': 0,'message':0,'friend':0};
+    $scope.badgeNum = {'email': 0, 'message': 0, 'friend': 0};
 
     //统计未读消息数目
     $scope.countNum = function () {
-      $scope.badgeNum = {'email': 0,'message':0,'friend':0};
+      $scope.badgeNum = {'email': 0, 'message': 0, 'friend': 0};
       for (var i = 0; i < $rootScope.myEmails.length; i++) {
         if ($rootScope.myEmails[i].status == 0) $scope.badgeNum.email++;
       }
@@ -114,44 +115,60 @@ angular.module('starter.controllers', [])
         if ($rootScope.myMessage[i].status == 0) $scope.badgeNum.message++;
       }
       for (var i = 0; i < $rootScope.myFriends.length; i++) {
-         $scope.badgeNum.friend+=$rootScope.myFriends[i].unread;
+        $scope.badgeNum.friend += $rootScope.myFriends[i].unread;
       }
     };
 
     //调用统计数目
     $scope.countNum();
-
   })
-  .controller("myemailCtrl", function ($scope, $rootScope) {
 
-  })
-  .controller("myfriendsCtrl", function () {
-
-  })
-  .controller("myleavemessageCtrl", function () {
-
-  })
-  .controller("transactionCtrl", function () {
-
-  })
-  .controller("myshopCtrl", function () {
-
-  })
 
   /**
    * 商品详情控制器
    */
-  .controller("detailCtrl", function ($stateParams,$scope) {
-      $scope.id=$stateParams.id;
-      $scope.goodNum=1;
-      $scope.minus=function () {
-        $scope.goodNum--;
-        $scope.$apply();
-      };
-      $scope.add=function () {
-        $scope.goodNum++;
-        $scope.$apply();
-      }
+  .controller("detailCtrl", function ($stateParams, $scope,$rootScope,$ionicModal) {
+    $scope.id = $stateParams.id;
+    $scope.goodNum = 1;
+    //减少数目
+    $scope.minus = function () {
+      $scope.goodNum--;
+      $scope.$apply();
+    };
+    //增加数目
+    $scope.add = function () {
+      $scope.goodNum++;
+      $scope.$apply();
+    }
+    //加入购物车
+    $scope.addGood=function (id,num) {
+      $rootScope.shoppingCar.push({'gid':id,'num':num})
+    };
+    //初始化modal
+    $ionicModal.fromTemplateUrl('templates/shop-shoppingCar.html', {
+      scope: $scope
+    }).then(function (modal) {
+      $scope.modal = modal;
+    });
+    $scope.shouldShowDelete = false;
+
+  })
+
+
+  /**
+   * 微超市控制器
+   */
+  .controller("shopCtrl", function ($rootScope, $scope, $ionicModal) {
+    //初始化modal
+    $ionicModal.fromTemplateUrl('templates/shop-shoppingCar.html', {
+      scope: $scope
+    }).then(function (modal) {
+      $scope.modal = modal;
+    });
+    $scope.shouldShowDelete = false;
+
+    //
+
   })
 
 

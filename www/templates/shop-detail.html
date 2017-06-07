@@ -1,11 +1,16 @@
-<ion-view view-title="商品详情">
+<ion-view>
+  <ion-nav-title>
+    商品详情
+    <button class="button button-clear" style="float: right;padding-top: 6px" ng-click="modal.show()">购物车</button>
+  </ion-nav-title>
   <ion-content>
     <ion-slide-box auto-play="true" does-continue="true" style="height: 250px">
       <ion-slide ng-repeat="pic in goodsList[id].photo" style="background-image:url({{pic}});background-size:100% 100%">
       </ion-slide>
     </ion-slide-box>
     <ion-list>
-      <h3 class="padding">{{goodsList[id].name}}</h3>
+      <h3 class="padding-left padding-top">{{goodsList[id].name}}</h3>
+      <h5 class="padding-left"><i class="ion-android-person"></i> {{goodsList[id].shop}}&nbsp; 月销量 {{goodsList[id].sold}}&nbsp; 赞 {{goodsList[id].like}}</h5>
       <ion-item>
         价格
         <h2 style="float: right;font-size: 18px" class="energized">{{goodsList[id].price|currency:'￥'}} </h2>
@@ -19,7 +24,7 @@
         总价
         <h2 style="float: right;font-size: 18px" class="energized">{{goodsList[id].price*goodNum|currency:'￥'}} </h2>
       </ion-item>
-      <button class="button button-block button-balanced">购 买</button>
+      <button class="button button-block button-balanced" ng-click="addGood(id,goodNum)">加 入 购 物 车</button>
       <p class="padding">{{goodsList[id].description}}</p>
     </ion-list>
   </ion-content>

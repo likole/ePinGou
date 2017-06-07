@@ -77,6 +77,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
       {'fid':3,'name':'刘璐','lastMessage':'社会你璐姐','unread':1,'avatar':"http://img1.touxiang.cn/uploads/20120509/09-014623_68.jpg"},
       {'fid':4,'name':'QQ小冰','lastMessage':'我叫社会。。','unread':2,'avatar':"http://img02.store.sogou.com/app/a/10010016/debcfa5fbc02ae098fce38de1550769a"},
     ];
+
+    //购物车
+    $rootScope.shoppingCar=[
+    ];
   })
 
   .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -89,7 +93,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
     $ionicConfigProvider.platform.android.navBar.alignTitle('left');
     $ionicConfigProvider.platform.android.navBar.alignTitle('left');
     $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');
-    $ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-android-arrow-back');
+    $ionicConfigProvider.platform.android.backButton.previousTitleText('false').icon('ion-android-arrow-back');
     $ionicConfigProvider.platform.ios.views.transition('ios');
     $ionicConfigProvider.platform.android.views.transition('android');
     // Ionic uses AngularUI Router which uses the concept of states
@@ -128,7 +132,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
         views: {
           'tab-account': {
             templateUrl: 'templates/tab-myemail.html',
-            controller: 'myemailCtrl'
           }
         }
       })
@@ -137,7 +140,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
         views: {
           'tab-account': {
             templateUrl: 'templates/tab-myfriends.html',
-            controller: 'myfriendsCtrl'
           }
         }
       })
@@ -146,7 +148,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
         views: {
           'tab-account': {
             templateUrl: 'templates/tab-myleavemessage.html',
-            controller: 'myleavemessageCtrl'
           }
         }
       })
@@ -155,7 +156,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
         views: {
           'tab-account': {
             templateUrl: 'templates/account-transaction.html',
-            controller: 'transactionCtrl'
           }
         }
       })
@@ -164,7 +164,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
         views: {
           'tab-account': {
             templateUrl: 'templates/tab-myshop.html',
-            controller: 'myshopCtrl'
           }
         }
       })

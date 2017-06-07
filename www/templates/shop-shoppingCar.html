@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <button class="button button-clear" ng-click="shouldShowDelete=!shouldShowDelete">编辑</button>
+    <h1 class="title">购物车</h1>
+    <button class="button button-clear button-primary" ng-click="modal.hide()">关闭</button>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list show-delete="shouldShowDelete">
+      <ion-item ng-repeat="car in shoppingCar" class="item item-thumbnail-left">
+        <!--删除按钮-->
+        <ion-delete-button class="ion-minus-circled"
+                           ng-click="shoppingCar.splice($index, 1)">
+        </ion-delete-button>
+        <!--商品信息-->
+        <img src="{{goodsList[car.gid].photo[0]}}"/>
+        <h2>{{goodsList[car.gid].name}}</h2>
+        <p><i class="ion-android-person"></i> {{goodsList[car.gid].shop}} </p>
+        <p>{{goodsList[car.gid].price|currency:'￥'}} X {{car.num}}</p>
+        <span class="energized"
+              style="font-size: 24px">{{goodsList[car.gid].price*car.num|currency:'￥'}}</span>
+      </ion-item>
+      <button class="button button-block button-energized">结算</button>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

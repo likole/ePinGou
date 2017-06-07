@@ -127,7 +127,7 @@ angular.module('starter.controllers', [])
   /**
    * 商品详情控制器
    */
-  .controller("detailCtrl", function ($stateParams, $scope,$rootScope,$ionicModal) {
+  .controller("detailCtrl", function ($stateParams, $scope,$rootScope,$ionicModal,$cordovaToast) {
     $scope.id = $stateParams.id;
     $scope.goodNum = 1;
     //减少数目
@@ -143,6 +143,7 @@ angular.module('starter.controllers', [])
     //加入购物车
     $scope.addGood=function (id,num) {
       $rootScope.shoppingCar.push({'gid':id,'num':num})
+      $cordovaToast.showShortBottom('添加成功');
     };
     //初始化modal
     $ionicModal.fromTemplateUrl('templates/shop-shoppingCar.html', {
